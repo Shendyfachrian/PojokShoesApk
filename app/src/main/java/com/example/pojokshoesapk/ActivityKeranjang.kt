@@ -167,8 +167,6 @@ class ActivityKeranjang : AppCompatActivity() {
                         } else {
                             showError("Gagal memuat detail keranjang.")
                         }
-                    } else {
-                        showError("Gagal memuat detail keranjang: ${response.message()}")
                     }
                 }
 
@@ -227,7 +225,8 @@ class ActivityKeranjang : AppCompatActivity() {
                             keranjangList.removeAt(position)
 
                             // Perbarui adapter
-                            keranjangAdapter.removeItem(position)
+                           // keranjangAdapter.removeItem(position)
+                            keranjangAdapter.notifyItemRemoved(position)
 
                             // Perbarui total pembayaran
                             updateTotalPembayaran()
@@ -261,6 +260,7 @@ class ActivityKeranjang : AppCompatActivity() {
                 }
             })
     }
+
 
     private fun calculateTotalPembayaran(): Int {
         return detailKeranjangList.sumOf { it.detail_harga }
@@ -315,7 +315,7 @@ class ActivityKeranjang : AppCompatActivity() {
                             updateTotalPembayaran()
                         }
                     } else {
-                        showError("Gagal melakukan checkout: ${response.message()}")
+                        null
                     }
                 }
 

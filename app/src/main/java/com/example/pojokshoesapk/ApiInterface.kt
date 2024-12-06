@@ -30,9 +30,8 @@ interface ApiInterface {
     @GET("checkout/{checkout_id}")
     fun getCheckoutDetail(@Path("checkout_id") checkoutId: Int): Call<CheckoutData>
 
-    @DELETE("api/detailkeranjang/detail/{id}")
+    @DELETE("detailkeranjang/detail/{id}")
     fun deleteDetailKeranjang(@Path("id") detailId: Int): Call<DeleteResponse>
-
 
     @POST("login")
     fun login(@Body loginData: LoginData): Call<Login_Response>
